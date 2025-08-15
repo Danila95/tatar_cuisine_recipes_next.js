@@ -1,0 +1,23 @@
+# top-most EditorConfig file
+
+# Корневой файл EditorConfig
+root = true
+
+# Unix-style newlines with a newline ending every file
+# Для всех файлов используем unix-совместимые переносы строк
+[*]
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace: = true
+charset = utf-8
+
+# Используем табы для отступов (Не указываем размер)
+[*.js]
+indent_style = tab
+indent_size = 2
+
+
+# Только для файлов package.json
+[{package.json}]
+indent_style = space
+indent_size = 2
