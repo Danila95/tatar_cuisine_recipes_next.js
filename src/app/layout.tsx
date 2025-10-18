@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "./components/ui/header";
 import { Providers } from "./providers/provider";
+import { siteConfig } from "@/config/site.config";
+import { layoutConfig } from "@/config/layout.config";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,8 +17,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Татарская кухня",
-  description: "Рецепты татарской кухни",
+  title: siteConfig.title,
+  description: siteConfig.description,
 };
 
 export default function RootLayout({
@@ -31,7 +33,19 @@ export default function RootLayout({
       >
         <Providers>
           <Header />
-          {children}
+            <main className={`
+                    flex 
+                    flex-col 
+                    h-[calc(100vh-${layoutConfig.headerHeight}-${layoutConfig.footerHeight})] 
+                    w-full 
+                    justify-start 
+                    items-center
+                `}>
+                {children}
+            </main>
+            <footer className={`flex h-[${layoutConfig.footerHeight}] justify-center items-center`}>
+                <p>{siteConfig.description}</p>
+            </footer>
         </Providers>
       </body>
     </html>
